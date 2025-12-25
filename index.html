@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#00ff99" />
+  <meta name="author" content="Virati Akiranandhan Reddy" />
+  <meta name="description" content="Experimental workspace for testing ideas, prototypes, and learning workflows before production deployment." />
+  <meta name="keywords" content="ZeroMergeConflicts, experimental workspace, prototypes, developer lab, GitHub pages" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Zero Merge Conflicts — Experimental Workspace" />
+  <meta property="og:description" content="A secondary workspace for experiments, learning, and prototypes before production." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zeromergeconflicts.github.io" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Zero Merge Conflicts" />
+  <meta name="twitter:description" content="Experimental developer workspace for ideas and prototypes." />
+
   <title>Zero Merge Conflicts</title>
 
   <!-- Font Awesome -->
@@ -26,15 +43,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 32px;
-      overflow: hidden;
+      padding: 20px;
+      overflow-x: hidden;
     }
 
-    /* Three.js canvas */
     canvas {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       z-index: -1;
       filter: blur(0.3px);
     }
@@ -50,13 +65,13 @@
     }
 
     header {
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     h1 {
       font-size: 28px;
       color: #00ff99;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .tagline {
@@ -66,7 +81,7 @@
     }
 
     section {
-      margin-bottom: 34px;
+      margin-bottom: 32px;
     }
 
     h2 {
@@ -79,7 +94,6 @@
       font-size: 14px;
       line-height: 1.7;
       opacity: 0.85;
-      max-width: 760px;
     }
 
     ul {
@@ -94,12 +108,12 @@
 
     .links {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 12px;
     }
 
     .link {
-      padding: 10px 14px;
+      padding: 12px 14px;
       border: 1px solid #2a2a2a;
       border-radius: 10px;
       background: #111;
@@ -112,29 +126,21 @@
       transition: all 0.2s ease;
     }
 
-    .link i {
-      font-size: 15px;
-      opacity: 0.8;
-    }
-
     .link:hover {
       border-color: #00ff99;
       color: #00ff99;
     }
 
-    .link:hover i {
-      color: #00ff99;
-      opacity: 1;
-    }
-
     footer {
-      margin-top: 36px;
+      margin-top: 32px;
       padding-top: 16px;
       border-top: 1px solid #222;
       display: flex;
       justify-content: space-between;
+      gap: 14px;
       font-size: 12px;
-      opacity: 0.6;
+      opacity: 0.65;
+      flex-wrap: wrap;
     }
 
     .brand-link {
@@ -160,6 +166,26 @@
     .mono {
       font-family: monospace;
     }
+
+    /* 📱 Mobile tweaks */
+    @media (max-width: 600px) {
+      .wrapper {
+        padding: 26px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .tagline {
+        font-size: 13px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
   </style>
 </head>
 
@@ -170,25 +196,24 @@
       <h1>Experimental Workspace</h1>
       <p class="tagline">
         A secondary account used for testing ideas, prototypes, and learning workflows
-        before they move to production or the main profile.
+        before production or the main profile.
       </p>
     </header>
 
     <section>
       <h2>Purpose</h2>
       <p>
-        This workspace contains experimental repositories, draft implementations,
-        proofs of concept, and learning exercises. Code here may be incomplete,
-        unstable, or intentionally exploratory.
+        This workspace contains experimental repositories, drafts, proofs of concept,
+        and learning exercises. Code may be unstable or intentionally exploratory.
       </p>
     </section>
 
     <section>
       <h2>Notes & Logs</h2>
       <ul>
-        <li>• Experiments are documented lightly, not polished</li>
-        <li>• Successful ideas are migrated to main account</li>
-        <li>• Failures are kept for learning reference</li>
+        <li>• Experiments are lightly documented</li>
+        <li>• Successful ideas migrate to main account</li>
+        <li>• Failures are preserved for learning</li>
       </ul>
     </section>
 
@@ -199,24 +224,20 @@
         <a class="link" href="https://linkedin.com/in/viratiakiranandhanreddy"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
         <a class="link" href="https://instagram.com/viratiakiranandhanreddy"><i class="fa-brands fa-instagram"></i> Instagram</a>
         <a class="link" href="https://youtube.com/@ViratiAkiraNandhanReddy"><i class="fa-brands fa-youtube"></i> YouTube</a>
-        <a class="link" href="https://viratiakiranandhanreddy.blogspot.com"><i class="fa-brands fa-blogger"></i> Blogs</a>
-        <a class="link" href="https://facebook.com/ViratiAkiraNandhanReddy"><i class="fa-brands fa-facebook"></i> Facebook</a>
-        <a class="link" href="mailto:contact.viratiakiranandhanreddy+gh-pgs-zeromergeconflicts@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
-        <a class="link" href="https://viratiakiranandhanreddy.github.io"><i class="fa-solid fa-globe"></i> Website</a>
       </div>
     </section>
 
     <footer>
-      <div><a href="https://github.com/ZeroMergeConflicts" class="brand-link">
+      <a href="https://github.com/ZeroMergeConflicts" class="brand-link">
         <i class="fa-brands fa-github"></i>
-        <span>ZeroMergeConflicts</span></a></div>
+        <span>ZeroMergeConflicts</span>
+      </a>
       <div class="mono">zeromergeconflicts.github.io</div>
     </footer>
   </div>
 
   <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-
   <script>
     let scene, camera, renderer, particles;
 
@@ -247,10 +268,7 @@
         positions[i] = (Math.random() - 0.5) * 20;
       }
 
-      geometry.setAttribute(
-        "position",
-        new THREE.BufferAttribute(positions, 3)
-      );
+      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
       const material = new THREE.PointsMaterial({
         color: 0x00ff99,
@@ -262,7 +280,11 @@
       particles = new THREE.Points(geometry, material);
       scene.add(particles);
 
-      window.addEventListener("resize", onResize);
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
     }
 
     function animate() {
@@ -270,12 +292,6 @@
       particles.rotation.y += 0.0006;
       particles.rotation.x += 0.0003;
       renderer.render(scene, camera);
-    }
-
-    function onResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
     }
   </script>
 
