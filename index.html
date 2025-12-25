@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zero Merge Conflicts</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, monospace;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0b0b0b, #000);
+      color: #eaeaea;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 32px;
+      overflow: hidden;
+    }
+
+    /* Three.js canvas */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      filter: blur(0.3px);
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 18px;
+      padding: 42px;
+      box-shadow: 0 0 40px rgba(0, 255, 160, 0.08);
+    }
+
+    header {
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #00ff99;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      opacity: 0.75;
+      max-width: 700px;
+    }
+
+    section {
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      font-size: 17px;
+      margin-bottom: 12px;
+      color: #d0d0d0;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      opacity: 0.85;
+      max-width: 760px;
+    }
+
+    ul {
+      list-style: none;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .link {
+      padding: 10px 14px;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      background: #111;
+      font-size: 13px;
+      text-decoration: none;
+      color: #eaeaea;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .link i {
+      font-size: 15px;
+      opacity: 0.8;
+    }
+
+    .link:hover {
+      border-color: #00ff99;
+      color: #00ff99;
+    }
+
+    .link:hover i {
+      color: #00ff99;
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid #222;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .mono {
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1>Experimental Workspace</h1>
+      <p class="tagline">
+        A secondary account used for testing ideas, prototypes, and learning workflows
+        before they move to production or the main profile.
+      </p>
+    </header>
+
+    <section>
+      <h2>Purpose</h2>
+      <p>
+        This workspace contains experimental repositories, draft implementations,
+        proofs of concept, and learning exercises. Code here may be incomplete,
+        unstable, or intentionally exploratory.
+      </p>
+    </section>
+
+    <section>
+      <h2>Notes & Logs</h2>
+      <ul>
+        <li>• Experiments are documented lightly, not polished</li>
+        <li>• Successful ideas are migrated to main account</li>
+        <li>• Failures are kept for learning reference</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Main Account & Contact</h2>
+      <div class="links">
+        <a class="link" href="https://github.com/ViratiAkiraNandhanReddy"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a class="link" href="https://linkedin.com/in/viratiakiranandhanreddy"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a class="link" href="https://instagram.com/viratiakiranandhanreddy"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a class="link" href="https://youtube.com/@ViratiAkiraNandhanReddy"><i class="fa-brands fa-youtube"></i> YouTube</a>
+        <a class="link" href="https://viratiakiranandhanreddy.blogspot.com"><i class="fa-brands fa-blogger"></i> Blogs</a>
+        <a class="link" href="https://facebook.com/ViratiAkiraNandhanReddy"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a class="link" href="mailto:contact.viratiakiranandhanreddy+gh-pgs-zeromergeconflicts@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
+        <a class="link" href="https://viratiakiranandhanreddy.github.io"><i class="fa-solid fa-globe"></i> Website</a>
+      </div>
+    </section>
+
+    <footer>
+      <div><span class="mono"><a href="https://github.com/ZeroMergeConflicts">ZeroMergeConflicts</a></span></div>
+      <div class="mono">zeromergeconflicts.github.io</div>
+    </footer>
+  </div>
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+  <script>
+    let scene, camera, renderer, particles;
+
+    init();
+    animate();
+
+    function init() {
+      scene = new THREE.Scene();
+
+      camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 5;
+
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      document.body.appendChild(renderer.domElement);
+
+      const geometry = new THREE.BufferGeometry();
+      const count = 1800;
+      const positions = new Float32Array(count * 3);
+
+      for (let i = 0; i < count * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 20;
+      }
+
+      geometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(positions, 3)
+      );
+
+      const material = new THREE.PointsMaterial({
+        color: 0x00ff99,
+        size: 0.02,
+        transparent: true,
+        opacity: 0.55,
+      });
+
+      particles = new THREE.Points(geometry, material);
+      scene.add(particles);
+
+      window.addEventListener("resize", onResize);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particles.rotation.y += 0.0006;
+      particles.rotation.x += 0.0003;
+      renderer.render(scene, camera);
+    }
+
+    function onResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+  </script>
+
+</body>
+</html>
