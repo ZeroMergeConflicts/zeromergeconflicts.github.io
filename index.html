@@ -137,6 +137,26 @@
       opacity: 0.6;
     }
 
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #2a2a2a;
+      background: linear-gradient(180deg, #111, #0c0c0c);
+      text-decoration: none;
+      color: #eaeaea;
+      font-size: 13px;
+      transition: all 0.25s ease;
+    }
+
+    .brand-link:hover {
+      color: #00ff99;
+      border-color: #00ff99;
+      box-shadow: 0 0 14px rgba(0, 255, 153, 0.25);
+    }
+
     .mono {
       font-family: monospace;
     }
@@ -187,7 +207,9 @@
     </section>
 
     <footer>
-      <div><span class="mono"><a href="https://github.com/ZeroMergeConflicts">ZeroMergeConflicts</a></span></div>
+      <div><a href="https://github.com/ZeroMergeConflicts" class="brand-link">
+        <i class="fa-brands fa-github"></i>
+        <span>ZeroMergeConflicts</span></a></div>
       <div class="mono">zeromergeconflicts.github.io</div>
     </footer>
   </div>
