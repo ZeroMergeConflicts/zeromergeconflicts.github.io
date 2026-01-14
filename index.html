@@ -1,286 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <!-- Basic Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#00ff99" />
   <meta name="author" content="Virati Akiranandhan Reddy" />
-  <meta name="description" content="Experimental workspace for testing ideas, prototypes, and learning workflows before production deployment." />
-  <meta name="keywords" content="ZeroMergeConflicts, experimental workspace, prototypes, developer lab, GitHub pages" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Zero Merge Conflicts — Experimental Workspace" />
-  <meta property="og:description" content="A secondary workspace for experiments, learning, and prototypes before production." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://zeromergeconflicts.github.io" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Zero Merge Conflicts" />
-  <meta name="twitter:description" content="Experimental developer workspace for ideas and prototypes." />
 
   <title>Zero Merge Conflicts</title>
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <!-- Primary SEO -->
+  <meta name="description" content="Zero Merge Conflicts is an experimental digital lab for rapid prototyping, architectural exploration, and technical drafts. A high-fidelity workspace by Virati Akiranandhan Reddy." />
+  <meta name="keywords" content="Zero Merge Conflicts, Ethereal Lab, experimental workspace, prototyping lab, software architecture, developer portfolio, creative coding, Virati Akiranandhan Reddy" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://zeromergeconflicts.github.io/" />
+
+  <!-- Theme / UX -->
+  <meta name="theme-color" content="#bc77ff" />
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Discord) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Zero Merge Conflicts" />
+  <meta property="og:description" content="A high-fidelity experimental environment for prototyping, learning, and architectural exploration." />
+  <meta property="og:url" content="https://zeromergeconflicts.github.io/" />
+  <meta property="og:site_name" content="Zero Merge Conflicts" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Zero Merge Conflicts",
+    "description": "An experimental digital laboratory for rapid prototyping, technical drafts, and architectural learning.",
+    "url": "https://zeromergeconflicts.io/",
+    "creator": {
+      "@type": "Person",
+      "name": "Virati Akiranandhan Reddy",
+      "url": "https://github.com/ViratiAkiraNandhanReddy"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, monospace;
+    :root {
+      --bg: #050505;
+      --card-bg: rgba(10, 10, 10, 0.6);
+      --accent: #bc77ff; /* Soft Purple */
+      --cyan: #00f2ff;
+      --text: #ffffff;
+      --text-dim: rgba(255, 255, 255, 0.6);
+      --border: rgba(255, 255, 255, 0.08);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; cursor: default; }
+
     body {
-      background: linear-gradient(180deg, #0b0b0b, #000);
-      color: #eaeaea;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-      overflow-x: hidden;
     }
 
     canvas {
       position: fixed;
-      inset: 0;
-      z-index: -1;
-      filter: blur(0.3px);
+      top: 0; left: 0; z-index: -1;
+      filter: brightness(0.6);
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 900px;
-      background: #0f0f0f;
-      border: 1px solid #222;
-      border-radius: 18px;
-      padding: 42px;
-      box-shadow: 0 0 40px rgba(0, 255, 160, 0.08);
+    /* Main Layout */
+    .dashboard {
+      width: 90%;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+      padding: 40px 0;
+      z-index: 10;
     }
 
-    header {
-      margin-bottom: 32px;
+    .glass-tile {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 30px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-tile:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(188, 119, 255, 0.1);
+    }
+
+    /* Hero Section (Spans 2 columns) */
+    .hero {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     h1 {
-      font-size: 28px;
-      color: #00ff99;
-      margin-bottom: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 15px;
+      background: linear-gradient(to bottom right, #fff 30%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .tagline {
-      font-size: 14px;
-      opacity: 0.75;
-      max-width: 700px;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(188, 119, 255, 0.1);
+      border: 1px solid rgba(188, 119, 255, 0.2);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
 
-    section {
-      margin-bottom: 32px;
+    /* Right Stats Side */
+    .side-panel {
+      grid-column: span 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     h2 {
-      font-size: 17px;
-      margin-bottom: 12px;
-      color: #d0d0d0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: var(--text);
     }
 
-    p {
-      font-size: 14px;
-      line-height: 1.7;
-      opacity: 0.85;
-    }
+    p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
 
-    ul {
-      list-style: none;
-      font-size: 13px;
-      opacity: 0.85;
-    }
-
-    ul li {
-      margin-bottom: 6px;
-    }
-
-    .links {
+    /* Social/Links List */
+    .links-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
-    .link {
-      padding: 12px 14px;
-      border: 1px solid #2a2a2a;
-      border-radius: 10px;
-      background: #111;
-      font-size: 13px;
+    .btn {
+      padding: 15px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
       text-decoration: none;
-      color: #eaeaea;
+      color: var(--text);
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: all 0.2s ease;
+      transition: 0.3s;
     }
 
-    .link:hover {
-      border-color: #00ff99;
-      color: #00ff99;
-    }
+    .btn i { color: var(--accent); font-size: 1.1rem; }
 
-    footer {
-      margin-top: 32px;
-      padding-top: 16px;
-      border-top: 1px solid #222;
+    .btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .btn:hover i { color: var(--bg); }
+
+    /* Footer area */
+    .footer-tile {
+      grid-column: span 3;
       display: flex;
       justify-content: space-between;
-      gap: 14px;
-      font-size: 12px;
-      opacity: 0.65;
-      flex-wrap: wrap;
-    }
-
-    .brand-link {
-      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid #2a2a2a;
-      background: linear-gradient(180deg, #111, #0c0c0c);
-      text-decoration: none;
-      color: #eaeaea;
-      font-size: 13px;
-      transition: all 0.25s ease;
+      padding: 20px 40px;
     }
 
-    .brand-link:hover {
-      color: #00ff99;
-      border-color: #00ff99;
-      box-shadow: 0 0 14px rgba(0, 255, 153, 0.25);
-    }
+    .copyright { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 1px; }
 
-    .mono {
-      font-family: monospace;
-    }
-
-    /* 📱 Mobile tweaks */
-    @media (max-width: 600px) {
-      .wrapper {
-        padding: 26px;
-      }
-
-      h1 {
-        font-size: 22px;
-      }
-
-      .tagline {
-        font-size: 13px;
-      }
-
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    /* Mobile */
+    @media (max-width: 850px) {
+      .dashboard { grid-template-columns: 1fr; }
+      .hero, .side-panel, .footer-tile { grid-column: span 1; }
+      h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
-    <header>
-      <h1>Experimental Workspace</h1>
-      <p class="tagline">
-        A secondary account used for testing ideas, prototypes, and learning workflows
-        before production or the main profile.
-      </p>
-    </header>
+  <div class="dashboard">
+    <div class="glass-tile hero">
+      <div class="status-badge"><i class="fa-solid fa-bolt"></i> Workspace Active</div>
+      <h1>Zero Merge<br>Conflicts.</h1>
+      <p>A high-fidelity experimental environment dedicated to rapid prototyping, technical drafts, and architectural learning. Where code evolves before deployment.</p>
+    </div>
 
-    <section>
-      <h2>Purpose</h2>
-      <p>
-        This workspace contains experimental repositories, drafts, proofs of concept,
-        and learning exercises. Code may be unstable or intentionally exploratory.
-      </p>
-    </section>
-
-    <section>
-      <h2>Notes & Logs</h2>
-      <ul>
-        <li>• Experiments are lightly documented</li>
-        <li>• Successful ideas migrate to main account</li>
-        <li>• Failures are preserved for learning</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Main Account & Contact</h2>
-      <div class="links">
-        <a class="link" href="https://github.com/ViratiAkiraNandhanReddy"><i class="fa-brands fa-github"></i> GitHub</a>
-        <a class="link" href="https://linkedin.com/in/viratiakiranandhanreddy"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-        <a class="link" href="https://instagram.com/viratiakiranandhanreddy"><i class="fa-brands fa-instagram"></i> Instagram</a>
-        <a class="link" href="https://youtube.com/@ViratiAkiraNandhanReddy"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    <div class="glass-tile side-panel">
+      <h2>The Mission</h2>
+      <p>Building artifacts in the void. This secondary hub ensures the main production remains pristine while I push limits here.</p>
+      <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+        <p style="font-size: 0.8rem;"><i class="fa-solid fa-code-branch" style="margin-right: 8px;"></i> 0 active conflicts</p>
       </div>
-    </section>
+    </div>
 
-    <footer>
-      <a href="https://github.com/ZeroMergeConflicts" class="brand-link">
-        <i class="fa-brands fa-github"></i>
-        <span>ZeroMergeConflicts</span>
-      </a>
-      <div class="mono">zeromergeconflicts.github.io</div>
-    </footer>
+    <div class="glass-tile hero" style="grid-column: span 1;">
+      <h2>Connectivity</h2>
+      <div class="links-grid">
+        <a href="https://github.com/ViratiAkiraNandhanReddy" class="btn"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/viratiakiranandhanreddy" class="btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://instagram.com/viratiakiranandhanreddy" class="btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://youtube.com/@ViratiAkiraNandhanReddy" class="btn"><i class="fa-brands fa-youtube"></i> YouTube</a>
+      </div>
+    </div>
+
+    <div class="glass-tile hero" style="grid-column: span 2;">
+        <h2>Laboratory Protocols</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <p><i class="fa-solid fa-microscope" style="color: var(--accent); margin-right: 10px;"></i> Prototyping ideas with non-standard libraries.</p>
+            <p><i class="fa-solid fa-book-sparkles" style="color: var(--cyan); margin-right: 10px;"></i> Documenting failures to accelerate future success.</p>
+        </div>
+    </div>
+
+    <div class="glass-tile footer-tile">
+      <div class="copyright">© 2026 VIRATI AKIRANANDHAN REDDY</div>
+      <div class="copyright" style="font-family: 'Space Grotesk'; opacity: 0.4;">zeromergeconflicts.io</div>
+    </div>
   </div>
 
-  <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <script>
-    let scene, camera, renderer, particles;
+    let scene, camera, renderer, mesh;
 
     init();
     animate();
 
     function init() {
       scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 15;
 
-      camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      camera.position.z = 5;
-
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
       document.body.appendChild(renderer.domElement);
 
-      const geometry = new THREE.BufferGeometry();
-      const count = 1800;
-      const positions = new Float32Array(count * 3);
-
-      for (let i = 0; i < count * 3; i++) {
-        positions[i] = (Math.random() - 0.5) * 20;
-      }
-
-      geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-      const material = new THREE.PointsMaterial({
-        color: 0x00ff99,
-        size: 0.02,
-        transparent: true,
-        opacity: 0.55,
+      // Create a wavy plane (Neural Mesh)
+      const geometry = new THREE.PlaneGeometry(50, 50, 40, 40);
+      const material = new THREE.MeshBasicMaterial({ 
+        color: 0xbc77ff, 
+        wireframe: true, 
+        transparent: true, 
+        opacity: 0.15 
       });
 
-      particles = new THREE.Points(geometry, material);
-      scene.add(particles);
+      mesh = new THREE.Mesh(geometry, material);
+      mesh.rotation.x = -Math.PI / 3;
+      scene.add(mesh);
 
-      window.addEventListener("resize", () => {
+      window.addEventListener('resize', () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -289,11 +285,23 @@
 
     function animate() {
       requestAnimationFrame(animate);
-      particles.rotation.y += 0.0006;
-      particles.rotation.x += 0.0003;
+
+      // Wave Logic
+      const time = Date.now() * 0.001;
+      const position = mesh.geometry.attributes.position;
+
+      for (let i = 0; i < position.count; i++) {
+        const x = position.getX(i);
+        const y = position.getY(i);
+        const z = Math.sin(x * 0.3 + time) * Math.cos(y * 0.3 + time) * 1.5;
+        position.setZ(i, z);
+      }
+      
+      position.needsUpdate = true;
+      mesh.rotation.z += 0.001;
+
       renderer.render(scene, camera);
     }
   </script>
-
 </body>
 </html>
